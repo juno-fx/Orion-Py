@@ -1,0 +1,7 @@
+pytest
+pytest-cov
+pytest-asyncio
+coverage
+ruff
+pylint
+ty

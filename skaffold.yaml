@@ -1,0 +1,46 @@
+apiVersion: skaffold/v4beta6
+kind: Config
+build:
+  local:
+    push: false
+  tagPolicy:
+    sha256: {}
+  artifacts:
+    - image: testservice
+      docker:
+        dockerfile: Dockerfile.testservice
+    - image: orionpy-test
+      docker:
+        dockerfile: Dockerfile.test
+    - image: orionpy-test-unit
+      docker:
+        dockerfile: Dockerfile.test
+
+manifests:
+  kustomize:
+    paths:
+      - k8s
+
+verify:
+  # run integration tests
+  - name: orionpy-test
+    container:
+      image: orionpy-test
+      name: orionpy-test
+    timeout: 600
+    executionMode:
+      kubernetesCluster:
+        jobManifestPath: tests/test_runner.yaml
+
+profiles:
+  - name: unit-tests
+    verify:
+      # run unit tests only
+      - name: orionpy-test-unit
+        container:
+          image: orionpy-test-unit
+          name: orionpy-test-unit
+        timeout: 300
+        executionMode:
+          kubernetesCluster:
+            jobManifestPath: tests/test_runner_unit.yaml

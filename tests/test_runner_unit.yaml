@@ -1,0 +1,16 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: orionpy-test-runner-unit
+  namespace: default
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      serviceAccountName: default
+      containers:
+        - name: orionpy-test-runner-unit
+          image: orionpy-test-unit
+          command: ["bash", "tests/run_unit_tests.sh"]
