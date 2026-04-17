@@ -46,3 +46,7 @@ check: .tools/dev.Makefile
 
 install: .tools/dev.Makefile
 	@ $(MAKE) -f .tools/dev.Makefile install $(ENV) --no-print-directory
+
+compile-reqs:
+	@uv pip compile requirements.txt -o requirements.lock
+	@uv pip compile dev-requirements.txt -o dev-requirements.lock
