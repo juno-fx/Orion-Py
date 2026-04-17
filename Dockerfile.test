@@ -1,0 +1,12 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+COPY requirements.txt dev-requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt -r dev-requirements.txt
+
+COPY orionpy/ ./orionpy/
+COPY tests/ ./tests/
+COPY setup.py ./
+
+CMD ["bash", "tests/run_tests.sh"]

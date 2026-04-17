@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rhea-policies
+  namespace: default
+data:
+  policies.cedar: |
+    permit(
+      principal == default::KubernetesServiceAccount::"orionpy-test",
+      action == Action::"GET",
+      resource == argocd::Service::"testservice"
+    );
+    permit(
+      principal == default::KubernetesServiceAccount::"orionpy-test",
+      action == Action::"POST",
+      resource == argocd::Service::"testservice"
+    );

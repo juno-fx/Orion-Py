@@ -1,0 +1,4 @@
+httpx==0.28.1
+kubernetes==35.0.0
+PyJWT==2.12.1
+websockets==16.0

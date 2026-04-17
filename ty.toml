@@ -1,0 +1,6 @@
+[environment]
+python = "./venv"
+root = ["."]
+
+[src]
+exclude = ["./tests", "setup.py"]
