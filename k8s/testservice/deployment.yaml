@@ -20,7 +20,10 @@ spec:
             - containerPort: 3000
               name: http
         - name: rhea
-          image: junoinnovations/rhea:unstable
+          image: junoinnovations/rhea:v1.0.0
+          env:
+            - name: LOGLEVEL
+              value: debug
           ports:
             - containerPort: 13000
               name: auth
