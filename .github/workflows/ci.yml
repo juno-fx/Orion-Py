@@ -5,10 +5,10 @@ on:
 
 jobs:
   QC:
-    uses: juno-fx/Orion-Py/.github/workflows/ms-qc.yml@10-enable-ci
+    uses: ./.github/workflows/ms-qc.yml
     secrets: inherit
   Test:
     needs:
       - QC
-    uses: juno-fx/Orion-Py.github/workflows/ms-test.yml@10-enable-ci
+    uses: ./.github/workflows/ms-test.yml
     secrets: inherit
