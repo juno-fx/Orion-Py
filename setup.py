@@ -5,7 +5,7 @@ with open("requirements.txt") as f:
 
 setup(
     name="orionpy",
-    version="1.1.1",
+    version="1.1.2",
     description="Kubernetes service-to-service HTTP client with automatic token management",
     packages=find_packages(),
     install_requires=requirements,
