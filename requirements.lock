@@ -27,7 +27,7 @@ kubernetes==35.0.0
     # via -r requirements.txt
 oauthlib==3.3.1
     # via requests-oauthlib
-pyjwt==2.12.1
+pyjwt==2.13.0
     # via -r requirements.txt
 python-dateutil==2.9.0.post0
     # via kubernetes
